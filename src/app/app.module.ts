@@ -9,6 +9,8 @@ import { RoutesCardComponent } from "./pages/routes/routes-card/routes-card.comp
 import { RoutesListComponent } from "./pages/routes/routes-list/routes-list.component";
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { LoginComponent } from './pages/login/login.component';
     imports: [
     BrowserModule,        
     AppRoutingModule,
+    FormsModule,
+    HttpClientModule
     
     
     ],
