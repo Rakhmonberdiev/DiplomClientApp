@@ -7,6 +7,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RoutesCardComponent } from "./pages/routes/routes-card/routes-card.component";
 import { RoutesListComponent } from "./pages/routes/routes-list/routes-list.component";
+import { RegisterComponent } from './pages/register/register.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { RoutesListComponent } from "./pages/routes/routes-list/routes-list.comp
         FooterComponent,
         HomeComponent,
         RoutesCardComponent,
-        RoutesListComponent
+        RoutesListComponent,
+        RegisterComponent
     ],
     imports: [
     BrowserModule,        
