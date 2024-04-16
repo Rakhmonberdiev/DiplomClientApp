@@ -3,6 +3,9 @@
         <div class="col-auto">
                 <form *ngIf="!(accountService.currentUser$|async)" #logginForm (ngSubmit) ="login()">
                     <h3 class="text-center">Авторизоваться</h3>
+                    <div class="form-floating mb-3" *ngIf="showError">
+                      <p class="text-danger">{{errorMessage}}</p>
+                    </div>
                     <hr>
                     <div class="form-floating mb-3">
                         <input 
@@ -31,11 +34,6 @@
                       <div class="text-center" style="padding-top: 20px;">
                         <button class="btn btn-primary" type="submit">Авторизоваться</button>
                         <button class="btn btn-default" type="button" routerLink="/">Отмена</button>
-                      </div>
-                      <div class="row" *ngIf="loginErrors"> 
-                        <ul class="text-danger">
-                            <li *ngFor="let error of loginErrors">{{error}}</li>
-                        </ul>
                       </div>
                 </form>
         </div>

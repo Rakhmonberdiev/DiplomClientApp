@@ -9,8 +9,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  model: any = {}
-  loginErrors: string | undefined;
+  model: any = {};
+  showError: boolean = false;
+  errorMessage!: string;
   constructor(public accountService: AccountService, private router: Router){
 
   }
@@ -20,6 +21,10 @@ export class LoginComponent {
       next: _ =>{
         this.router.navigateByUrl('/'),
         this.model = {}
+      },
+      error: error =>{
+        this.showError = true
+        this.errorMessage = error.error
       }
     })
   }
