@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-auto">
+                <form>
+                    <h3 class="text-center">Авторизоваться</h3>
+                    <hr>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="UserName" placeholder="Логин">
+                        <label for="UserName">Логин</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="password" placeholder="Пароль" autocomplete="off">
+                        <label for="password">Пароль</label>
+                      </div>
+                    <br>
+                    <a routerLink="/register">У вас ещё нет аккаунта? Зарегистрироваться</a>
+                      <div class="text-center" style="padding-top: 20px;">
+                        <button class="btn btn-primary" type="submit">Авторизоваться</button>
+                        <button class="btn btn-default" type="button" routerLink="/">Отмена</button>
+                      </div>
+                      <div class="row"> 
+                        <ul class="text-danger">
+                            <li>Ошибка</li>
+                        </ul>
+                      </div>
+                </form>
+        </div>
+    </div>
+</div>
