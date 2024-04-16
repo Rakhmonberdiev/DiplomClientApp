@@ -2,6 +2,6 @@
   <div class="container">
     <a class="navbar-brand" routerLink="/">IBus</a>
       <button *ngIf="!(accountService.currentUser$|async)" class="btn btn-secondary my-2 my-sm-0" routerLink="/login">Авторизация</button>
-      <button  *ngIf="(accountService.currentUser$|async) as user" class="btn btn-secondary my-2 my-sm-0">{{user.userName}}</button>
+      <button  *ngIf="(accountService.currentUser$|async) as user" class="btn btn-secondary my-2 my-sm-0" (click)="logout()">{{user.userName}}</button>
   </div>
 </nav>
