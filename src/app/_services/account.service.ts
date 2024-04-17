@@ -27,6 +27,15 @@ currentUser$ = this.currentUserSource.asObservable();
     )
   }
 
+  register(model:any){
+    return this.http.post<User>(this.baseUrl+'auth/register', model).pipe(
+      map(user=>{
+        if(user){
+          this.setCurrentUser(user)
+        }
+      })
+    )
+  }
   logout() {
     localStorage.removeItem('user');
     this.currentUserSource.next(null);

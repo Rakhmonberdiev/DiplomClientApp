@@ -1,37 +1,77 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-auto">
-                <form>
+                <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid&&register()">
                     <h3 class="text-center">регистрация</h3>
                     <hr>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="UserName" placeholder="Логин">
+                        <input
+                        formControlName ="userName"
+                        [class.is-invalid]="registerForm.get('userName')?.invalid&&registerForm.get('userName')?.touched"
+                        type="text" 
+                        class="form-control" 
+                        id="UserName" 
+                        placeholder="Логин">
                         <label for="UserName">Логин</label>
+                        <div class="invalid-feedback" *ngIf="registerForm.get('userName')?.errors?.['required']" >Логин обязателен.</div>
                       </div>
                       <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="phoneNumber" placeholder="Номер тел.">
+                        <input 
+                        formControlName="phoneNumber"
+                        [class.is-invalid]="registerForm.get('phoneNumber')?.invalid&&registerForm.get('phoneNumber')?.touched"
+                        type="text" 
+                        class="form-control" 
+                        id="phoneNumber" 
+                        placeholder="Номер тел.">
                         <label for="phoneNumber">Номер тел.</label>
+                        <div class="invalid-feedback" *ngIf="registerForm.get('phoneNumber')?.errors?.['required']">Номер телефона обязателен.</div>
                       </div>
                       <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="city" placeholder="Город">
+                        <input 
+                        formControlName ="city"
+                        [class.is-invalid]="registerForm.get('city')?.invalid&&registerForm.get('city')?.touched"
+                        type="text" 
+                        class="form-control" 
+                        id="city" 
+                        placeholder="Город">
                         <label for="city">Город</label>
+                        <div class="invalid-feedback" *ngIf="registerForm.get('city')?.errors?.['required']">Город обязателен.</div>
                       </div>
                       <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="password" placeholder="Пароль" autocomplete="off">
+                        <input 
+                        formControlName="password"
+                        [class.is-invalid]="registerForm.get('password')?.invalid&&registerForm.get('password')?.touched"
+                        type="password" 
+                        class="form-control" 
+                        id="password" 
+                        placeholder="Пароль" 
+                        autocomplete="off">
                         <label for="password">Пароль</label>
+                        <div class="invalid-feedback" *ngIf="registerForm.get('password')?.errors?.['required']">Пароль обязателен.</div>
+                        <div class="invalid-feedback" *ngIf="registerForm.get('password')?.errors?.['minlength']">Пароль должен быть не менее 8 символов.</div>
+                        <div class="invalid-feedback" *ngIf="registerForm.get('password')?.errors?.['maxlength']">Пароль должен быть не более 50 символов.</div>
                       </div>
                       <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="confirmPassword" placeholder="Подтвердите пароль" autocomplete="off">
+                        <input 
+                        formControlName = "confirmPassword"
+                        [class.is-invalid]="registerForm.get('confirmPassword')?.invalid&&registerForm.get('confirmPassword')?.touched"
+                        type="password" 
+                        class="form-control" 
+                        id="confirmPassword" 
+                        placeholder="Подтвердите пароль" 
+                        autocomplete="off">
                         <label for="confirmPassword">Подтвердите пароль</label>
+                        <div class="invalid-feedback" *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Подтверждение пароля обязательно.</div>
+                        <div class="invalid-feedback" *ngIf="registerForm.get('confirmPassword')?.errors?.['notMatching']">Пароли не совпадают.</div>
                       </div>
                     <br>
                       <div class="text-center mb-3">
-                        <button class="btn btn-primary" type="submit">Зарегистрировать</button>
+                        <button [disabled]="!registerForm.valid" class="btn btn-primary" type="submit">Зарегистрировать</button>
                         <button class="btn btn-default" type="button" routerLink="/">Отмена</button>
                       </div>
-                      <div class="row"> 
+                      <div class="row" *ngIf="validationErrors"> 
                         <ul class="text-danger">
-                            <li>Ошибка</li>
+                            <li *ngFor="let error of validationErrors">{{error}}</li>
                         </ul>
                       </div>
                 </form>

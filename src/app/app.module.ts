@@ -9,7 +9,7 @@ import { RoutesCardComponent } from "./pages/routes/routes-card/routes-card.comp
 import { RoutesListComponent } from "./pages/routes/routes-list/routes-list.component";
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { ErrorInterceptor } from "./_interceptors/error.interceptor";
 import { JwtInterceptor } from "./_interceptors/jwt.interceptor";
@@ -30,7 +30,9 @@ import { JwtInterceptor } from "./_interceptors/jwt.interceptor";
     BrowserModule,        
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
     
     
     ],
