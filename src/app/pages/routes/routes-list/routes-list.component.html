@@ -1,26 +1,5 @@
 <div class="row justify-content-md-center">
-    <div class="col-sm-3">
-        <app-routes-card></app-routes-card>
-    </div>
-    <div class="col-sm-3">
-        <app-routes-card></app-routes-card>
-    </div>
-    <div class="col-sm-3">
-        <app-routes-card></app-routes-card>
-    </div>
-    <div class="col-sm-3">
-        <app-routes-card></app-routes-card>
-    </div>
-    <div class="col-sm-3">
-        <app-routes-card></app-routes-card>
-    </div>
-    <div class="col-sm-3">
-        <app-routes-card></app-routes-card>
-    </div>
-    <div class="col-sm-3">
-        <app-routes-card></app-routes-card>
-    </div>
-    <div class="col-sm-3">
-        <app-routes-card></app-routes-card>
+    <div class="col-sm-3" *ngFor="let routeEn of routeEns">
+        <app-routes-card [routeEn]="routeEn"></app-routes-card>
     </div>
  </div>
