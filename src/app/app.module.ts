@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { ErrorInterceptor } from "./_interceptors/error.interceptor";
 import { JwtInterceptor } from "./_interceptors/jwt.interceptor";
+import { AboutComponent } from './pages/about/about.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { JwtInterceptor } from "./_interceptors/jwt.interceptor";
         RoutesCardComponent,
         RoutesListComponent,
         RegisterComponent,
-        LoginComponent
+        LoginComponent,
+        AboutComponent
     ],
     imports: [
     BrowserModule,        
