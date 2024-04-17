@@ -14,6 +14,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { ErrorInterceptor } from "./_interceptors/error.interceptor";
 import { JwtInterceptor } from "./_interceptors/jwt.interceptor";
 import { AboutComponent } from './pages/about/about.component';
+import { CareerComponent } from './pages/career/career.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { AboutComponent } from './pages/about/about.component';
         RoutesListComponent,
         RegisterComponent,
         LoginComponent,
-        AboutComponent
+        AboutComponent,
+        CareerComponent
     ],
     imports: [
     BrowserModule,        

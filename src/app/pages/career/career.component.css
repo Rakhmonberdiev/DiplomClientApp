@@ -1,0 +1,27 @@
+.container{
+    padding-top: 1%;
+    padding-bottom: 1%;
+
+    @media (max-width: 767px) {
+        padding-top: 3%;
+        padding-bottom: 3%; 
+      }
+      @media (min-width: 768px) and (max-width: 1023px) {
+        padding-top: 2%;
+        padding-bottom: 2%; 
+      }
+}
+
+
+
+.mytext{
+    font-weight: bold;
+    font-size: 30px;
+}
+.ptext{
+    font-size: 18px;
+}
+.ultext{
+    font-size: 18px;
+    font-weight: bold;
+}
