@@ -15,6 +15,7 @@ import { ErrorInterceptor } from "./_interceptors/error.interceptor";
 import { JwtInterceptor } from "./_interceptors/jwt.interceptor";
 import { AboutComponent } from './pages/about/about.component';
 import { CareerComponent } from './pages/career/career.component';
+import { NgSelectModule } from "@ng-select/ng-select";
 
 
 @NgModule({
@@ -36,7 +37,9 @@ import { CareerComponent } from './pages/career/career.component';
     FormsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgSelectModule
+    
     
     
     ],

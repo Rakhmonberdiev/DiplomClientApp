@@ -11,30 +11,41 @@
           IBus
         </figcaption>
       </figure>
-      <div class="row">
+      <form>
+      <div class="row justify-content-center">
         <div class="col-12 col-sm-3">
           <label class="col-form-label mt-2">От куда?</label>
-          <input type="text" class="form-control" placeholder="От куда">
+          <ng-select class="form-control" notFoundText="Элемент не найден" >
+              <ng-option *ngFor="let district of districts" [value]="district.id">{{district.title}}</ng-option>
+          </ng-select>
         </div>
         <div class="col-12 col-sm-3">
-          <label class="col-form-label mt-2" >Куда?</label>
-          <input type="text" class="form-control" placeholder="Куда?">
+          <label class="col-form-label mt-2">Куда?</label>
+          <ng-select class="form-control" notFoundText="Элемент не найден">
+              <ng-option *ngFor="let district of districts" [value]="district.id">{{district.title}}</ng-option>
+          </ng-select>
         </div>
-        <div class="col-12 col-sm-3">
-          <label class="col-form-label mt-2">Когда?</label>
-          <input type="date" class="form-control" placeholder="Когда">
-        </div>
-        <div class="col-12 col-sm-3">
-          <label class="col-form-label mt-2" >Во сколько?</label>
-          <select class="form-select" >
-            <option>10:00</option>
-            <option>12:00</option>
-            <option>13:00</option>
-            <option>14:00</option>
-            <option>15:00</option>
-          </select>
-        </div>
+          <div class="col-12 col-sm-3">
+            <label class="col-form-label mt-2">Когда?</label>
+            <input type="date" class="form-control" placeholder="Когда">
+          </div>
+          <div class="col-12 col-sm-3">
+            <label class="col-form-label mt-2" > Во сколько?</label>
+            <select class="form-select" >
+              <option>10:00</option>
+              <option>11:00</option>
+              <option>12:00</option>
+              <option>14:00</option>
+              <option>15:00</option>
+              <option>16:00</option>
+              <option>17:00</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-3" style="margin-top: 30px;">
+            <button class="btn btn-primary" type="submit">Купить</button>
+          </div>
       </div>
+    </form>
       <br>
       <br>
       <figure class="text-center">
