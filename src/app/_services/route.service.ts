@@ -22,4 +22,8 @@ export class RouteService {
       })
     )
   }
+
+  getRouteForTicket(fromId:string,toId:string){
+    return this.http.get<RouteEn[]>(this.baseUrl+'routes/GetRouteByDistrictId?fromId='+fromId+'&toId='+toId);
+  }
 }
