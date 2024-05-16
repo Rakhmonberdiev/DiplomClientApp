@@ -15,14 +15,14 @@
       <div class="row justify-content-center">
         <div class="col-12 col-sm-3">
           <label class="col-form-label mt-2">От куда?</label>
-          <ng-select class="form-control" notFoundText="Элемент не найден" >
+          <ng-select class="form-control" notFoundText="Элемент не найден" [(ngModel)] ="fromId" name="fromId" (ngModelChange)="(fromIdSelected = true)&&loadRoutForTicked()">
               <ng-option *ngFor="let district of districts" [value]="district.id">{{district.title}}</ng-option>
           </ng-select>
         </div>
         <div class="col-12 col-sm-3">
           <label class="col-form-label mt-2">Куда?</label>
-          <ng-select class="form-control" notFoundText="Элемент не найден">
-              <ng-option *ngFor="let district of districts" [value]="district.id">{{district.title}}</ng-option>
+          <ng-select class="form-control" notFoundText="Элемент не найден" [(ngModel)] ="toId" name="toId" (ngModelChange)="(toIdSelected = true)&&loadRoutForTicked()">
+              <ng-option *ngFor="let district of districts" [value]="district.id" >{{district.title}}</ng-option>
           </ng-select>
         </div>
           <div class="col-12 col-sm-3">
@@ -35,10 +35,33 @@
               <option *ngFor="let schedule of schedules" [value]="schedule.id">{{schedule.title}}</option>
             </select>
           </div>
-          <div class="col-12 col-sm-3" style="margin-top: 30px;">
+      </div>
+      @if (routeForTicked) {
+        <div class="row g-2 mt-4 text-center">
+          <div class="col-12 col-sm-3">
+            <h2 class="mt-2">{{routeForTicked.starPoint}}</h2>
+          </div>
+          <div class="col-12 col-sm-3">
+            <h2 class="mt-2">{{routeForTicked.endPoint}}</h2>
+          </div>
+          <div class="col-12 col-sm-3">
+            <h1 class="mt-2">{{routeForTicked.price}}сум</h1>
+          </div>
+          <div class="col-12 col-sm-3" >
             <button class="btn btn-primary" type="submit">Купить</button>
           </div>
       </div>
+      }
+      @else {
+        @if(fromIdSelected&&toIdSelected){
+          <div class="row mt-4">
+            <div class="col-sm-12">
+              <h4 class="text-center">К сожалению, в данный момент не найдено доступных билетов по вашему выбранному направлению. Мы сожалеем за любые неудобства, которые это может вызвать</h4>
+            </div>
+          </div>
+        }
+      }
+
     </form>
       <br>
       <br>
