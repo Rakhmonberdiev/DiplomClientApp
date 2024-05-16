@@ -5,6 +5,7 @@ import { Schedule } from '../../_models/schedule';
 import { ScheduleService } from '../../_services/schedule.service';
 import { RouteEn } from '../../_models/routeEn';
 import { RouteService } from '../../_services/route.service';
+import { AccountService } from '../../_services/account.service';
 
 
 @Component({
@@ -24,7 +25,8 @@ toIdSelected: boolean = false;
 
 constructor(private districtService: DistrictService, 
   private scheduleService: ScheduleService,
-  private routeService: RouteService){}
+  private routeService: RouteService,
+  public accountService: AccountService){}
 
 ngOnInit() {
   this.loadDistricts();
