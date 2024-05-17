@@ -16,6 +16,7 @@ import { JwtInterceptor } from "./_interceptors/jwt.interceptor";
 import { AboutComponent } from './pages/about/about.component';
 import { CareerComponent } from './pages/career/career.component';
 import { NgSelectModule } from "@ng-select/ng-select";
+import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { NgSelectModule } from "@ng-select/ng-select";
         RegisterComponent,
         LoginComponent,
         AboutComponent,
-        CareerComponent
+        CareerComponent,
+        AdminPanelComponent
     ],
     imports: [
     BrowserModule,        
