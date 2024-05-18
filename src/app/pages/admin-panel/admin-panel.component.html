@@ -1,1 +1,17 @@
-<p>admin-panel works!</p>
+<div class="container">
+    <tabset [justified]="true">
+        <tab heading="Маршурты">
+            <app-all-routes></app-all-routes>
+        </tab>
+        <tab heading="Районы">
+            <app-all-districts></app-all-districts>
+        </tab>
+        <tab heading="Расписания">
+            <app-all-schedules></app-all-schedules>
+            
+        </tab>
+        <tab heading="Билеты">
+            <app-all-tickets></app-all-tickets>
+        </tab>
+    </tabset>
+</div>

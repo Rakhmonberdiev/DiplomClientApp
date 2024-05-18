@@ -27,7 +27,7 @@ import { AllRoutesComponent } from './pages/admin/all-routes/all-routes.componen
 import { AllSchedulesComponent } from './pages/admin/all-schedules/all-schedules.component';
 import { AllDistrictsComponent } from './pages/admin/all-districts/all-districts.component';
 import { AllTicketsComponent } from './pages/admin/all-tickets/all-tickets.component';
-
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 
 registerLocaleData(localeRu);
@@ -62,6 +62,7 @@ registerLocaleData(localeRu);
     NgSelectModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
+    TabsModule.forRoot(),
 
     
     
