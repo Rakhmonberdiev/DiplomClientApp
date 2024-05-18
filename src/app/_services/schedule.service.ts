@@ -22,4 +22,9 @@ export class ScheduleService {
         })
       )
     }
+
+
+    getScheduleById(id:string){
+      return this.http.get<Schedule>(this.baseUrl+'Schedule?id='+id)
+    }
   }

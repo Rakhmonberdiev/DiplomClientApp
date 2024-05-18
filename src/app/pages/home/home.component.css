@@ -1,19 +1,4 @@
-ng-select{
- padding-left: 0;
- 
-}
-::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items {
- padding: 0.75rem 1.5rem;
- width: 100%;
- background-color: #f7f7f9;
- 
-}
-::ng-deep .ng-option {
-    color: rgb(0, 0, 0);
-    margin-left: 0.75rem 1.5rem;;
-    margin-top: 4px;
-    font-size: 16px;
-}
+
 
 @keyframes pulse {
     0% {
@@ -71,4 +56,15 @@ ng-select{
               filter: blur(0px);
       opacity: 1;
     }
+  }
+
+  .ng-select.custom{
+    border-color:rgb(0, 0, 0);
+    border-radius: 0%;
+  }
+
+  .ng-select.custom ::ng-deep .ng-select-container  {            
+    min-height: 0px;
+    border-radius: 1px;
+    height: 48px
   }

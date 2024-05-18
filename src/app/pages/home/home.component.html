@@ -11,44 +11,78 @@
           IBus
         </figcaption>
       </figure>
-      <form>
+  
       <div class="row justify-content-center">
         <div class="col-12 col-sm-3">
           <label class="col-form-label mt-2">От куда?</label>
-          <ng-select class="form-control" notFoundText="Элемент не найден" [(ngModel)] ="fromId" name="fromId" (ngModelChange)="(fromIdSelected = true)&&loadRoutForTicked()">
-              <ng-option *ngFor="let district of districts" [value]="district.id">{{district.title}}</ng-option>
+          <ng-select 
+          class="custom"
+          [items]="districts"
+          bindLabel="title"
+          [autofocus]="false"
+          bindValue="id"
+          [loading]="districtsLoading"
+          [placeholder]="'Выберите город'" 
+          notFoundText="Элемент не найден" 
+          [(ngModel)] ="fromId" 
+          name="fromId" 
+          (ngModelChange)="(fromIdSelected = true)&&loadRoutForTicked()"> 
           </ng-select>
         </div>
         <div class="col-12 col-sm-3">
           <label class="col-form-label mt-2">Куда?</label>
-          <ng-select class="form-control" notFoundText="Элемент не найден" [(ngModel)] ="toId" name="toId" (ngModelChange)="(toIdSelected = true)&&loadRoutForTicked()">
-              <ng-option *ngFor="let district of districts" [value]="district.id" >{{district.title}}</ng-option>
+          <ng-select 
+          class="custom"
+          [items]="districts"
+          bindLabel="title"
+          [autofocus]="false"
+          bindValue="id"
+          [loading]="districtsLoading"
+          [placeholder]="'Выберите город'" 
+          notFoundText="Элемент не найден" 
+          [(ngModel)] ="toId" 
+          name="toId" 
+          (ngModelChange)="(toIdSelected = true)&&loadRoutForTicked()"> 
           </ng-select>
         </div>
           <div class="col-12 col-sm-3">
             <label class="col-form-label mt-2">Когда?</label>
-            <input type="date" class="form-control" placeholder="Когда">
+            <input type="text"
+            placeholder="Datepicker"
+            class="form-control"
+            bsDatepicker
+            [bsConfig]="{ isAnimated: true }">
           </div>
           <div class="col-12 col-sm-3">
             <label class="col-form-label mt-2" > Во сколько?</label>
-            <select class="form-select">
-              <option *ngFor="let schedule of schedules" [value]="schedule.id">{{schedule.title}}</option>
-            </select>
+          <ng-select 
+          class="custom"
+          [items]="schedules"
+          bindLabel="title"
+          [autofocus]="false"
+          bindValue="id"
+          [loading]="districtsLoading"
+          [placeholder]="'Выберите время'" 
+          notFoundText="Элемент не найден" 
+          [(ngModel)] ="scheduleId"
+          name="scheduleId"
+          (ngModelChange)="(scheduleIdSelected = true)&&loadRoutForTicked()"> 
+          </ng-select>
           </div>
       </div>
-      @if (routeForTicked) {
+      @if (routeForTicket) {
         <div class="row g-2 mt-4 text-center fade-in ">
           <div class="col-12 col-sm-3" [ngClass]="{'col-sm-4':!(accountService.currentUser$|async)}">
-            <h2 class="mt-2">{{routeForTicked.starPoint}}</h2>
+            <h2 class="mt-2">{{routeForTicket.starPoint}}</h2>
           </div>
           <div class="col-12 col-sm-3" [ngClass]="{'col-sm-4':!(accountService.currentUser$|async)}">
-            <h2 class="mt-2">{{routeForTicked.endPoint}}</h2>
+            <h2 class="mt-2">{{routeForTicket.endPoint}}</h2>
           </div>
           <div class="col-12 col-sm-3" [ngClass]="{'col-sm-4':!(accountService.currentUser$|async)}">
-            <h1 class="mt-2 h1-pulse">{{routeForTicked.price}}сум</h1>
+            <h1 class="mt-2 h1-pulse">{{routeForTicket.price}}сум</h1>
           </div>
           <div class="col-12 col-sm-3" >
-            <button class="btn btn-primary" *ngIf="accountService.currentUser$|async" type="submit">Купить</button>
+            <button class="btn btn-primary" *ngIf="accountService.currentUser$|async" (click)="goToTicketConfirm()">Купить</button>
           </div>
       </div>
       @if(!(accountService.currentUser$|async)){
@@ -63,7 +97,7 @@
       }
       }
       @else {
-        @if(fromIdSelected&&toIdSelected){
+        @if(fromIdSelected&&toIdSelected&&scheduleIdSelected){
           <div class="row mt-4">
             <div class="col-sm-12">
               <h4 class="text-center text-focus-in ">К сожалению, в данный момент не найдено доступных билетов по вашему выбранному направлению. Мы сожалеем за любые неудобства, которые это может вызвать</h4>
@@ -71,7 +105,6 @@
           </div>
         }
       }
-    </form>
       <br>
       <br>
       <figure class="text-center">

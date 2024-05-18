@@ -17,7 +17,8 @@ import { AboutComponent } from './pages/about/about.component';
 import { CareerComponent } from './pages/career/career.component';
 import { NgSelectModule } from "@ng-select/ng-select";
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
-
+import { TicketConfirmComponent } from './pages/ticket-confirm/ticket-confirm.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
         LoginComponent,
         AboutComponent,
         CareerComponent,
-        AdminPanelComponent
+        AdminPanelComponent,
+        TicketConfirmComponent
     ],
     imports: [
     BrowserModule,        
@@ -40,7 +42,9 @@ import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgSelectModule
+    NgSelectModule,
+    BsDatepickerModule.forRoot(),
+
     
     
     

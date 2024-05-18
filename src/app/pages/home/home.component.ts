@@ -6,6 +6,8 @@ import { ScheduleService } from '../../_services/schedule.service';
 import { RouteEn } from '../../_models/routeEn';
 import { RouteService } from '../../_services/route.service';
 import { AccountService } from '../../_services/account.service';
+import { Router } from '@angular/router';
+import { TicketService } from '../../_services/ticket.service';
 
 
 @Component({
@@ -17,16 +19,19 @@ export class HomeComponent{
 
 districts: District[]=[];
 schedules: Schedule[]=[];
-routeForTicked?: RouteEn; 
-fromId:string='';
-toId:string='';
+routeForTicket!: any; 
+fromId!:string;
+toId!:string;
 fromIdSelected: boolean = false;
 toIdSelected: boolean = false;
-
+scheduleIdSelected: boolean = false;
+districtsLoading = false;
+scheduleId! : any;
+scheduleModel! : any;
 constructor(private districtService: DistrictService, 
   private scheduleService: ScheduleService,
   private routeService: RouteService,
-  public accountService: AccountService){}
+  public accountService: AccountService, private router:Router,private ticketService: TicketService){}
 
 ngOnInit() {
   this.loadDistricts();
@@ -45,10 +50,24 @@ loadSchedule(){
   })
 }
 loadRoutForTicked(){
-  if (this.fromIdSelected && this.toIdSelected){
+  if (this.fromIdSelected && this.toIdSelected&& this.scheduleIdSelected){
     this.routeService.getRouteForTicket(this.fromId,this.toId).subscribe(rs=>{
-      this.routeForTicked = rs;
+      this.routeForTicket = rs;
     })
   }
+}
+
+goToTicketConfirm(){
+  if (this.routeForTicket) {
+    const ticketData ={
+      id: this.routeForTicket.id,
+      price: this.routeForTicket.price,
+      starPoint: this.routeForTicket.starPoint,
+      endPoint: this.routeForTicket.endPoint,
+      scheduleId: this.scheduleId,
+    };
+    this.ticketService.setTicketData(ticketData);
+    this.router.navigate(['/ticket-confirm']);
+  } 
 }
 }
