@@ -9,6 +9,9 @@ import { TicketConfirmComponent } from "./pages/ticket-confirm/ticket-confirm.co
 import { authGuard } from "./_guards/auth.guard";
 import { adminGuard } from "./_guards/admin.guard";
 import { AdminPanelComponent } from "./pages/admin-panel/admin-panel.component";
+import { AllRoutesComponent } from "./pages/admin/all-routes/all-routes.component";
+import { AllDistrictsComponent } from "./pages/admin/all-districts/all-districts.component";
+import { AllSchedulesComponent } from "./pages/admin/all-schedules/all-schedules.component";
 
 
 const routes: Routes = [
@@ -29,6 +32,15 @@ const routes: Routes = [
     children:[
         {
             path: 'admin-panel',component: AdminPanelComponent
+        },
+        {
+            path: 'all-routes', component: AllRoutesComponent
+        },
+        {
+            path: 'all-districts', component : AllDistrictsComponent
+        },
+        {
+            path: 'all-schedules', component: AllSchedulesComponent
         }
     ]
 }
