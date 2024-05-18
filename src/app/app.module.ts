@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import localeRu from '@angular/common/locales/ru';
 import { registerLocaleData } from "@angular/common";
+import { HasRoleDirective } from "./_directives/has-role.directive";
 
 
 
@@ -41,6 +42,7 @@ registerLocaleData(localeRu);
         CareerComponent,
         AdminPanelComponent,
         TicketConfirmComponent,
+        HasRoleDirective,
     ],
     imports: [
     BrowserModule,        

@@ -1,6 +1,9 @@
 <div class="container slideT">
     <br>
     <br>
+    <div *appHasRole="['Admin']" class="d-flex justify-content-center ddd">
+      <button  class="btn btn-primary" routerLink="/admin-panel">панель управления администратора</button>
+    </div>
     <figure class="text-center">
         <blockquote class="blockquote">
             <h3>Бронируйте маршрутки - удобно и быстро!</h3>
