@@ -23,6 +23,10 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import localeRu from '@angular/common/locales/ru';
 import { registerLocaleData } from "@angular/common";
 import { HasRoleDirective } from "./_directives/has-role.directive";
+import { AllRoutesComponent } from './pages/admin/all-routes/all-routes.component';
+import { AllSchedulesComponent } from './pages/admin/all-schedules/all-schedules.component';
+import { AllDistrictsComponent } from './pages/admin/all-districts/all-districts.component';
+import { AllTicketsComponent } from './pages/admin/all-tickets/all-tickets.component';
 
 
 
@@ -43,6 +47,10 @@ registerLocaleData(localeRu);
         AdminPanelComponent,
         TicketConfirmComponent,
         HasRoleDirective,
+        AllRoutesComponent,
+        AllSchedulesComponent,
+        AllDistrictsComponent,
+        AllTicketsComponent,
     ],
     imports: [
     BrowserModule,        
