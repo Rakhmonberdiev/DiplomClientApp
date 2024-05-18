@@ -22,6 +22,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import localeRu from '@angular/common/locales/ru';
 import { registerLocaleData } from "@angular/common";
+
+
+
 registerLocaleData(localeRu);
 
 @NgModule({
@@ -37,7 +40,7 @@ registerLocaleData(localeRu);
         AboutComponent,
         CareerComponent,
         AdminPanelComponent,
-        TicketConfirmComponent
+        TicketConfirmComponent,
     ],
     imports: [
     BrowserModule,        

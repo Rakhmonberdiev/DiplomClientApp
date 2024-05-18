@@ -8,39 +8,32 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AccountService {
+  baseUrl = environment.apiUrl;
+  private currentUserSource = new BehaviorSubject<User | null>(null);
+  currentUser$ = this.currentUserSource.asObservable();
 
-baseUrl = environment.apiUrl
-private currentUserSource = new BehaviorSubject<User | null>(null);
-currentUser$ = this.currentUserSource.asObservable();
-
-
-  constructor(private http: HttpClient) { }
-
-  login(model:any){
-    return this.http.post<User>(this.baseUrl+'auth/login', model).pipe(
+  constructor(private http: HttpClient) {}
+  
+  login(model: any){
+    return this.http.post<User>(this.baseUrl + 'Auth/login', model).pipe(
       map((response: User)=>{
         const user = response;
         if(user){
-          this.setCurrentUser(user)
+          this.setCurrentUser(user);
         }
       })
     )
   }
-
   register(model:any){
-    return this.http.post<User>(this.baseUrl+'auth/register', model).pipe(
-      map(user=>{
+    return this.http.post<User>(this.baseUrl+'auth/register',model).pipe(
+      map(user =>{
         if(user){
-          this.setCurrentUser(user)
+          
+          this.setCurrentUser(user);
         }
       })
     )
   }
-  logout() {
-    localStorage.removeItem('user');
-    this.currentUserSource.next(null);
-  }
-
   setCurrentUser(user: User){
     user.roles=[];
     const roles = this.getDecodedToken(user.token).role;
@@ -48,9 +41,14 @@ currentUser$ = this.currentUserSource.asObservable();
     localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);
   }
-  getDecodedToken(token: string){
-    return JSON.parse(atob(token.split('.')[1]));
+
+
+  logout() {
+    localStorage.removeItem('user');
+    this.currentUserSource.next(null);
   }
 
-
+  getDecodedToken(token:string){
+    return JSON.parse(atob(token.split('.')[1]));
+  }
 }

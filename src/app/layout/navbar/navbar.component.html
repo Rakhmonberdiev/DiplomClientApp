@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
   <div class="container">
-    <a class="navbar-brand" routerLink="/">IBus</a>
-      <button *ngIf="!(accountService.currentUser$|async)" class="btn btn-secondary my-2 my-sm-0" routerLink="/login">Авторизация</button>
-      <button  *ngIf="(accountService.currentUser$|async) as user" class="btn btn-secondary my-2 my-sm-0" (click)="logout()">{{user.userName}}</button>
+      <a class="navbar-brand" routerLink="/">IBus</a>
+      <button routerLink="/admin-panel" class="btn my-2 my-sm-0 btn-secondary" type="button">Админ-панель</button>
+      <button *ngIf="!(accountService.currentUser$|async)" class="btn btn-secondary my-2 my-sm-0" type="button" routerLink="/login">Авторизация</button>
+      <button  *ngIf="(accountService.currentUser$|async) as user" class="btn btn-secondary my-2 my-sm-0" type="button" (click)="logout()">{{user.userName}}</button>
   </div>
 </nav>
