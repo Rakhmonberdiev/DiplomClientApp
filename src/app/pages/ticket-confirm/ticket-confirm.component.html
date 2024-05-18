@@ -6,7 +6,7 @@
             <p style="font-size: 1.6em;">Дата и время поездки: {{ ticketData?.date | date:'d MMMM, yyyy' }}, в {{ schedule }}</p>
             <p style="font-size: 1.6em;">Стоимость билета: {{ticketData?.price}} сум</p>
             <br>
-            <button class="btn btn-primary">Да</button>
+            <button class="btn btn-primary" (click)="sendData()">Да</button>
             <button class="btn btn-primary" style="margin-left: 14px;" routerLink="/">Нет</button>
         </div>
       

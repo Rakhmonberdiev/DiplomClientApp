@@ -4,6 +4,7 @@ import { TicketService } from '../../_services/ticket.service';
 import { Router } from '@angular/router';
 import { ScheduleService } from '../../_services/schedule.service';
 import { Schedule } from '../../_models/schedule';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-ticket-confirm',
@@ -14,16 +15,19 @@ import { Schedule } from '../../_models/schedule';
 export class TicketConfirmComponent implements OnInit {
   ticketData: any;
   schedule!:string;
-
-  constructor(private ticketService: TicketService, private router:Router, private scheduleService: ScheduleService) { }
-  ngOnInit(): void {
-    this.ticketData = this.ticketService.getTicketData();
+  ticketForm: FormGroup = new FormGroup({});
   
+  constructor(private ticketService: TicketService, private router:Router, private scheduleService: ScheduleService,private fBuilder: FormBuilder) { }
+  ngOnInit(): void {
+    this.getTicket();
+  }
+
+  getTicket(){
+    this.ticketData = this.ticketService.getTicketData();
     if (!this.ticketData) {
       this.router.navigateByUrl('/');
       return;
     }
-    
     this.scheduleService.getScheduleById(this.ticketData.scheduleId).subscribe(rs => {
       this.schedule = rs.title;
       if (!this.schedule) {
@@ -31,5 +35,12 @@ export class TicketConfirmComponent implements OnInit {
       }
     });
   }
-
+  sendData(){
+    const value = {
+      date: this.ticketData.date,
+      routeId: this.ticketData.id,
+      scheduleId: this.ticketData.scheduleId
+    }
+    console.log(value)
+  }
 }
