@@ -2,3 +2,33 @@
 
 
 
+.slideR{
+    opacity: 0;
+    animation: slightRight 0.5s ease forwards;
+  }
+  .slideT{
+    opacity: 0;
+    animation: slightLeft 0.5s ease forwards;
+  
+  }
+  @keyframes slightRight {
+    0%{
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    100%{
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes slightLeft {
+    0%{
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    100%{
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
