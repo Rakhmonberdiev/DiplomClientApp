@@ -45,13 +45,15 @@
           (ngModelChange)="(toIdSelected = true)&&loadRoutForTicked()"> 
           </ng-select>
         </div>
-          <div class="col-12 col-sm-3">
+          <div class="col-12 custom col-sm-3">
             <label class="col-form-label mt-2">Когда?</label>
             <input type="text"
             placeholder="Datepicker"
             class="form-control"
             bsDatepicker
-            [bsConfig]="{ isAnimated: true }">
+            [(bsValue)]="bsDatePickerValue"
+            [bsConfig]="bsConfig"
+            (bsValueChange)="(dateSelected=true)">
           </div>
           <div class="col-12 col-sm-3">
             <label class="col-form-label mt-2" > Во сколько?</label>

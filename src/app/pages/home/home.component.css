@@ -68,3 +68,12 @@
     border-radius: 1px;
     height: 48px
   }
+
+  .custom input{
+    color:#333;
+    background-color:#fff;
+    border-radius:0%;
+    border:1px solid #ccc;
+    min-height:36px;
+    align-items:center
+  }

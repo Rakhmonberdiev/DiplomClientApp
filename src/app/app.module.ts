@@ -18,7 +18,11 @@ import { CareerComponent } from './pages/career/career.component';
 import { NgSelectModule } from "@ng-select/ng-select";
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { TicketConfirmComponent } from './pages/ticket-confirm/ticket-confirm.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import localeRu from '@angular/common/locales/ru';
+import { registerLocaleData } from "@angular/common";
+registerLocaleData(localeRu);
 
 @NgModule({
     declarations: [
@@ -43,6 +47,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
+    BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
 
     
