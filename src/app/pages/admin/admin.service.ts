@@ -5,6 +5,7 @@ import { RouteEn } from "../../_models/routeEn";
 import { District } from "../../_models/district";
 import { PaginatedResult } from "../../_models/pagination";
 import { map } from "rxjs";
+import { Schedule } from "../../_models/schedule";
 
 
 
@@ -66,6 +67,9 @@ export class AdminService{
                 return this.paginatedResultRT;
             })
         )
+    }
+    GetAllSCH(){
+        return this.http.get<Schedule[]>(this.baseUrl+'Schedule/GetAll')
     }
 
 }

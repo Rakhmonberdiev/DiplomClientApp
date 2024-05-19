@@ -1,1 +1,24 @@
-<p>all-schedules works!</p>
+<br>
+<div class="d-flex align-items-center flex-wrap">
+    <div class="me-auto">
+      <button class="btn btn-outline-primary mb-4 mb-sm-0">Добавить</button>
+    </div>
+  </div>
+<hr>
+@if (schedules.length>0) {
+  <table class="table slideTo" [@fadeIn]>
+    <tbody>
+      <tr *ngFor="let sch of schedules">
+        <th scope="row">{{sch.id}}</th>
+        <td>{{sch.title}}</td>
+        <td><button class="btn btn-outline-danger" >Удалить</button></td>
+      </tr>
+    </tbody>
+</table>
+}@else {
+  <div class="container" style="height: 400px;">
+    <div class="d-flex justify-content-center slideTo" >
+        <h5>Расписание не найдено....</h5>
+    </div>
+</div>
+}
