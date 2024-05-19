@@ -28,8 +28,9 @@
     </div>
 
 }
+<br>
   <div class="d-flex justify-content-center" *ngIf="pagination">
-    <pagination 
+    <pagination class="pagination-lg"
     [boundaryLinks]="true" 
     [totalItems]="pagination.totalItems"
     [itemsPerPage]="pagination.itemsPerPage"
@@ -40,7 +41,6 @@
     nextText="&rsaquo;" 
     firstText="&laquo;" 
     lastText="&raquo;">
-  
   </pagination>
   </div>
 
