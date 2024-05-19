@@ -5,12 +5,13 @@
     </div>
     <input class="form-control mr-sm-2 me-2 mb-sm-0" #search style="width: 600px;" placeholder="Поиск" type="text">
     <div class="d-flex">
-      <button (click)="onSearch()" class="btn btn-outline-primary me-2">Поиск</button>
+      <button (click)="onSearch()" class="btn btn-outline-primary me-2" type="submit">Поиск</button>
       <button (click)="onReset()" class="btn btn-outline-danger">Сброс</button>
     </div>
   </div>
 <hr>
-<table class="table" >
+@if (routes.length>0) {
+  <table class="table slideTo" >
     <tbody>
       <tr *ngFor="let rout of routes">
         <th scope="row">{{rout.id}}</th>
@@ -19,6 +20,13 @@
         <td>{{rout.price}} сум</td>
         <td><button class="btn btn-outline-danger" >Удалить</button></td>
       </tr>
- 
     </tbody>
-  </table>
+</table>
+}@else {
+  <div class="container" style="height: 400px;">
+    <div class="d-flex justify-content-center slideTo" >
+        <h5>Маршурт не найден....</h5>
+    </div>
+</div>
+}
+
