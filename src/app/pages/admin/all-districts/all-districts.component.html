@@ -13,7 +13,7 @@
 @if (dists.length>0) {
     <table class="table slideTo" >
         <tbody>
-          <tr *ngFor="let rout of dists">
+          <tr *ngFor="let rout of dists" [@fadeIn]>
             <th scope="row">{{rout.id}}</th>
             <td>{{rout.title}}</td>
             <td><button class="btn btn-outline-danger" >Удалить</button></td>
@@ -28,4 +28,19 @@
     </div>
 
 }
+  <div class="d-flex justify-content-center" *ngIf="pagination">
+    <pagination 
+    [boundaryLinks]="true" 
+    [totalItems]="pagination.totalItems"
+    [itemsPerPage]="pagination.itemsPerPage"
+    [maxSize]="6"
+    [(ngModel)]="pagination.currentPage"
+    (pageChanged)="changePage($event)"
+    previousText="&lsaquo;" 
+    nextText="&rsaquo;" 
+    firstText="&laquo;" 
+    lastText="&raquo;">
+  
+  </pagination>
+  </div>
 
