@@ -3,7 +3,7 @@
     <div class="me-auto">
       <button class="btn btn-outline-primary mb-4 mb-sm-0">Добавить</button>
     </div>
-    <input class="form-control mr-sm-2 me-2 mb-sm-0" #search style="width: 600px;" placeholder="Поиск" type="text">
+    <input name="search" class="form-control mr-sm-2 me-2 mb-sm-0" #search style="width: 600px;" placeholder="Поиск" type="text">
     <div class="d-flex">
       <button (click)="onSearch()" class="btn btn-outline-primary me-2" type="submit">Поиск</button>
       <button (click)="onReset()" class="btn btn-outline-danger">Сброс</button>
@@ -11,7 +11,7 @@
   </div>
 <hr>
 @if (routes.length>0) {
-  <table class="table slideTo" >
+  <table class="table slideTo" [@fadeIn]>
     <tbody>
       <tr *ngFor="let rout of routes">
         <th scope="row">{{rout.id}}</th>
@@ -29,4 +29,18 @@
     </div>
 </div>
 }
+<div class="d-flex justify-content-center" *ngIf="pagination">
+  <pagination 
+  [boundaryLinks]="true" 
+  [totalItems]="pagination.totalItems"
+  [itemsPerPage]="pagination.itemsPerPage"
+  [maxSize]="6"
+  [(ngModel)]="pagination.currentPage"
+  (pageChanged)="changePage($event)"
+  previousText="&lsaquo;" 
+  nextText="&rsaquo;" 
+  firstText="&laquo;" 
+  lastText="&raquo;">
 
+</pagination>
+</div>

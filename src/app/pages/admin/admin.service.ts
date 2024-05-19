@@ -15,7 +15,8 @@ import { map } from "rxjs";
 
 export class AdminService{
     baseUrl = environment.apiUrl
-    paginatedResult: PaginatedResult<District[]> = new PaginatedResult<District[]>; 
+    paginatedResult: PaginatedResult<District[]> = new PaginatedResult<District[]>;
+    paginatedResultRT: PaginatedResult<RouteEn[]> = new PaginatedResult<RouteEn[]>; 
     constructor(private http:HttpClient){
 
     }
@@ -30,7 +31,7 @@ export class AdminService{
             params = params.append('search',search)
         }
 
-        return this.http.get<RouteEn[]>(this.baseUrl+'rayon/GetAll',{observe:'response',params}).pipe(
+        return this.http.get<District[]>(this.baseUrl+'rayon/GetAll',{observe:'response',params}).pipe(
             map(response=>{
                 if(response.body){
                     this.paginatedResult.result = response.body;
@@ -43,7 +44,28 @@ export class AdminService{
             })
         )
     }
-    getAllRoutes(search:string){
-        return this.http.get<RouteEn[]>(this.baseUrl+'routes/GetAll?search='+search);
+
+    GetallRT(pageNumber:number, itemsPerPage:number, search?:string){
+        let params = new HttpParams();
+        if(pageNumber&&itemsPerPage){
+            params = params.append('pageNumber',pageNumber);
+            params = params.append('pageSize', itemsPerPage);
+        }
+        if(search){
+            params = params.append('search',search)
+        }
+        return this.http.get<RouteEn[]>(this.baseUrl+'routes/GetAll',{observe:'response',params}).pipe(
+            map(response=>{
+                if(response.body){
+                    this.paginatedResultRT.result = response.body;
+                }
+                const pagination = response.headers.get('Pagination');
+                if(pagination){
+                    this.paginatedResultRT.pagination = JSON.parse(pagination);
+                }
+                return this.paginatedResultRT;
+            })
+        )
     }
+
 }

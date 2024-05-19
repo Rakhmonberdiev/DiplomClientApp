@@ -10,7 +10,7 @@ import { FadeIn } from '../animation';
   selector: 'app-all-districts',
   templateUrl: './all-districts.component.html',
   styleUrl: './all-districts.component.css',
-  animations: [FadeIn(200, true)]
+  animations: [FadeIn(300, true)]
 
 })
 export class AllDistrictsComponent implements OnInit {

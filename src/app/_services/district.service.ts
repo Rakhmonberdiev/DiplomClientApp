@@ -18,7 +18,7 @@ constructor(private http: HttpClient){}
 getDistrict(){
   const response = this.routeCache.get(Object.values('').join('-'));
   if(response) return of(response);
-    return this.http.get<District[]>(this.baseUrl+'rayon/GetAll').pipe(
+    return this.http.get<District[]>(this.baseUrl+'rayon/GetAllForHome').pipe(
       map(response=>{
         this.routeCache.set(Object.values('').join('-'), response);
         return response;
