@@ -76,15 +76,30 @@ export class AllDistrictsComponent implements OnInit {
     this.modalRef = this.modalService.show(DistUpdateModalComponent, config);
     this.modalRef.onHide?.subscribe({
       next:()=>{
-        this.getDists();
+        const confirm = this.modalRef.content?.confirm
+        if(confirm){
+          this.getDists();
+        }
       }
     })
   }
 
-  openDeleteModal(){
-    const config ={
-      animated:true
-    }
-    this.deleteModalRef = this.modalService.show(DeleteConfirmModalComponent, config)
+  openDeleteModal(id: string) {
+    const config = {
+      animated: true
+    };
+    this.deleteModalRef = this.modalService.show(DeleteConfirmModalComponent, config);
+    this.deleteModalRef.onHide?.subscribe({
+      next: () => {
+        const deleteConfirm = this.deleteModalRef.content?.deleteConfirm;
+        if (deleteConfirm) {
+          this.adminService.deleteDist(id).subscribe(
+            ()=>{
+              this.getDists();
+            }
+          )
+        }
+      }
+    });
   }
 }

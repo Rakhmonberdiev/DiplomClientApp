@@ -16,7 +16,7 @@
           <tr *ngFor="let rout of dists" [@fadeIn]>
             <th scope="row">{{rout.id}}</th>
             <td>{{rout.title}}</td>
-            <td><button class="btn btn-outline-info" (click)="openModal(rout)">Ред.</button> <button style="margin-left: 16px;" class="btn btn-outline-danger" (click)="openDeleteModal()">Удалить</button></td>
+            <td><button class="btn btn-outline-info" (click)="openModal(rout)">Ред.</button> <button style="margin-left: 16px;" class="btn btn-outline-danger" (click)="openDeleteModal(rout.id)">Удалить</button></td>
           </tr>
         </tbody>
       </table>

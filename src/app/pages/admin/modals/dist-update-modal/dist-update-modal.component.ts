@@ -11,6 +11,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class DistUpdateModalComponent implements OnInit {
   distId!: string;
   title!:string;
+  confirm: boolean = false;
   constructor(public bsModalRef: BsModalRef,private adminService: AdminService){
 
   }
@@ -28,7 +29,7 @@ export class DistUpdateModalComponent implements OnInit {
 
   submit(){
   const distId = this.distId;
-    console.log(this.title)
+  this.confirm = true;
     this.adminService.updateDist(distId,this.title).subscribe(
       ()=>{
         this.bsModalRef.hide();
