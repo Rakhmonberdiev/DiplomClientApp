@@ -29,7 +29,8 @@ import { AllDistrictsComponent } from './pages/admin/all-districts/all-districts
 import { AllTicketsComponent } from './pages/admin/all-tickets/all-tickets.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
-
+import { DistUpdateModalComponent } from './pages/admin/modals/dist-update-modal/dist-update-modal.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 registerLocaleData(localeRu);
 
 @NgModule({
@@ -51,6 +52,7 @@ registerLocaleData(localeRu);
         AllSchedulesComponent,
         AllDistrictsComponent,
         AllTicketsComponent,
+        DistUpdateModalComponent,
     ],
     imports: [
     BrowserModule,        
@@ -63,8 +65,8 @@ registerLocaleData(localeRu);
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
     TabsModule.forRoot(),
-    PaginationModule.forRoot()
-
+    PaginationModule.forRoot(),
+    ModalModule.forRoot(),
     
     
     

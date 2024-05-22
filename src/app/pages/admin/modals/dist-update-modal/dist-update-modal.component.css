@@ -1,0 +1,13 @@
+.pulse {
+    animation: pulse 1s infinite;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  

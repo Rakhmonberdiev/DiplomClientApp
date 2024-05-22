@@ -4,7 +4,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { RouteEn } from "../../_models/routeEn";
 import { District } from "../../_models/district";
 import { PaginatedResult } from "../../_models/pagination";
-import { map } from "rxjs";
+import { Subject, map } from "rxjs";
 import { Schedule } from "../../_models/schedule";
 
 
@@ -18,9 +18,15 @@ export class AdminService{
     baseUrl = environment.apiUrl
     paginatedResult: PaginatedResult<District[]> = new PaginatedResult<District[]>;
     paginatedResultRT: PaginatedResult<RouteEn[]> = new PaginatedResult<RouteEn[]>; 
+
+
+   
     constructor(private http:HttpClient){
 
     }
+
+
+  
 
     getAllDist(pageNumber:number, itemsPerPage:number, search?:string){
         let params = new HttpParams();
@@ -70,6 +76,16 @@ export class AdminService{
     }
     GetAllSCH(){
         return this.http.get<Schedule[]>(this.baseUrl+'Schedule/GetAll')
+    }
+
+    getByIdDist(id:string){
+        return this.http.get<District>(this.baseUrl+'rayon/'+id);
+    }
+
+    updateDist(id:string,title:string){
+        const urlUpdate = this.baseUrl+'rayon/'+id
+        const data = {title:title};
+        return this.http.put(urlUpdate,data)
     }
 
 }

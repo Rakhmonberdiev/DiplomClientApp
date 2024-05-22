@@ -4,6 +4,8 @@ import { District } from '../../../_models/district';
 
 import { Pagination } from '../../../_models/pagination';
 import { FadeIn } from '../animation';
+import { DistUpdateModalComponent } from '../modals/dist-update-modal/dist-update-modal.component';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -20,7 +22,9 @@ export class AllDistrictsComponent implements OnInit {
   pagination!: Pagination
   pageNumber = 1;
   pageSize = 4;
-  constructor(private adminService:AdminService){
+  modalRef:BsModalRef<DistUpdateModalComponent> = new BsModalRef<DistUpdateModalComponent>();
+  selectedTab = 2;
+  constructor(private adminService:AdminService, private modalService: BsModalService){
 
   }
   ngOnInit(): void {
@@ -52,5 +56,28 @@ export class AllDistrictsComponent implements OnInit {
     this.pageNumber = event.page;
     this.getDists();
     }
+  }
+
+
+
+ 
+
+  
+
+  openModal(dist: District){
+    const config ={ 
+      animated: true,
+      initialState : {
+        distId: dist.id,
+        title: dist.title
+      }
+    }
+    this.modalRef = this.modalService.show(DistUpdateModalComponent, config);
+    this.modalRef.onHide?.subscribe({
+      next:()=>{
+        this.getDists();
+      }
+    })
+
   }
 }

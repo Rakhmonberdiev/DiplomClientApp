@@ -1,14 +1,14 @@
 <div class="container">
+    
     <tabset [justified]="true">
+      <tab heading="Районы" class="slideR">
+        <app-all-districts></app-all-districts>
+    </tab>
         <tab heading="Маршурты" class="slideT">
             <app-all-routes></app-all-routes>
         </tab>
-        <tab heading="Районы" class="slideR">
-            <app-all-districts></app-all-districts>
-        </tab>
-        <tab heading="Расписания" class="slideT">
+        <tab heading="Расписания"  class="slideT">
             <app-all-schedules></app-all-schedules>
-            
         </tab>
         <tab heading="Билеты" class="slideR">
             <app-all-tickets></app-all-tickets>
