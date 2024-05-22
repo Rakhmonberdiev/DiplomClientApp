@@ -87,5 +87,9 @@ export class AdminService{
         const data = {title:title};
         return this.http.put(urlUpdate,data)
     }
+    deleteDist(id:string){
+        return  this.http.delete(this.baseUrl+"rayon/"+id);
+    }
+
 
 }

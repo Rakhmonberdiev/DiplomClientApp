@@ -6,6 +6,7 @@ import { Pagination } from '../../../_models/pagination';
 import { FadeIn } from '../animation';
 import { DistUpdateModalComponent } from '../modals/dist-update-modal/dist-update-modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { DeleteConfirmModalComponent } from '../modals/delete-confirm-modal/delete-confirm-modal.component';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class AllDistrictsComponent implements OnInit {
   pageNumber = 1;
   pageSize = 4;
   modalRef:BsModalRef<DistUpdateModalComponent> = new BsModalRef<DistUpdateModalComponent>();
-  selectedTab = 2;
+  deleteModalRef:BsModalRef<DeleteConfirmModalComponent> = new BsModalRef<DeleteConfirmModalComponent>();
   constructor(private adminService:AdminService, private modalService: BsModalService){
 
   }
@@ -78,6 +79,12 @@ export class AllDistrictsComponent implements OnInit {
         this.getDists();
       }
     })
+  }
 
+  openDeleteModal(){
+    const config ={
+      animated:true
+    }
+    this.deleteModalRef = this.modalService.show(DeleteConfirmModalComponent, config)
   }
 }

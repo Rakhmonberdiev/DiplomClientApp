@@ -11,11 +11,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class DistUpdateModalComponent implements OnInit {
   distId!: string;
   title!:string;
-  titleForm: FormGroup;
-  constructor(public bsModalRef: BsModalRef,private adminService: AdminService, private fBuilder: FormBuilder){
-    this.titleForm = new FormGroup({
-      title: new FormControl('', Validators.required)
-    });
+  constructor(public bsModalRef: BsModalRef,private adminService: AdminService){
+
   }
   ngOnInit(): void {
     this.loadModel();

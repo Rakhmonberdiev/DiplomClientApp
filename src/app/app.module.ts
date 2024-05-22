@@ -31,6 +31,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { DistUpdateModalComponent } from './pages/admin/modals/dist-update-modal/dist-update-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { DeleteConfirmModalComponent } from './pages/admin/modals/delete-confirm-modal/delete-confirm-modal.component';
 registerLocaleData(localeRu);
 
 @NgModule({
@@ -53,6 +54,7 @@ registerLocaleData(localeRu);
         AllDistrictsComponent,
         AllTicketsComponent,
         DistUpdateModalComponent,
+        DeleteConfirmModalComponent,
     ],
     imports: [
     BrowserModule,        
