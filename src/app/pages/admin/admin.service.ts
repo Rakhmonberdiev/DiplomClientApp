@@ -103,5 +103,9 @@ export class AdminService{
         return this.http.post(this.baseUrl+'rayon',model);
     }
 
+    createRout(model:any){
+        return this.http.post(this.baseUrl+'routes',model)
+    }
+
 
 }

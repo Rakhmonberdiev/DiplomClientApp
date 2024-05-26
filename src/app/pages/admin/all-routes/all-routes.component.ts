@@ -5,6 +5,8 @@ import { Pagination } from '../../../_models/pagination';
 import { FadeIn } from '../animation';
 import { DeleteConfirmModalComponent } from '../modals/delete-confirm-modal/delete-confirm-modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { RoutCreateModalComponent } from '../modals/rout-create-modal/rout-create-modal.component';
+import { ToastComponent } from '../../toast/toast.component';
 
 @Component({
   selector: 'app-all-routes',
@@ -20,6 +22,8 @@ export class AllRoutesComponent implements OnInit{
   pageNumber = 1;
   pageSize = 4;
   deleteModalRef:BsModalRef<DeleteConfirmModalComponent> = new BsModalRef<DeleteConfirmModalComponent>();
+  createModalRef:BsModalRef<RoutCreateModalComponent> = new BsModalRef<RoutCreateModalComponent>();
+  toastModalRef:BsModalRef<ToastComponent> = new BsModalRef<ToastComponent>();
   constructor(private adminService:AdminService, private modalService:BsModalService){
 
   }
@@ -70,6 +74,25 @@ export class AllRoutesComponent implements OnInit{
                 this.getAllRoutes();
               }
             )
+          }
+        }
+      });
+    }
+
+    openCreateModal(){
+      const config = {
+        animated: true
+      };
+      this.createModalRef = this.modalService.show(RoutCreateModalComponent,config);
+      this.createModalRef.onHide?.subscribe({
+        next: () => {
+          const createConfirm = this.createModalRef.content?.createConfirm;
+          if (createConfirm) {
+            this.getAllRoutes();
+            this.toastModalRef = this.modalService.show(ToastComponent, config);
+            setTimeout(() => {
+              this.toastModalRef.hide();
+            }, 1000);
           }
         }
       });

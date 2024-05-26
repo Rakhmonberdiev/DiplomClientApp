@@ -14,7 +14,7 @@ export class ToastComponent {
   }
 
   startProgressBar() {
-    const totalTime = 2000; // Время в миллисекундах
+    const totalTime = 1000; // Время в миллисекундах
     const interval = 10; // Интервал обновления прогресса (10 миллисекунд)
 
     const decrement = (interval / totalTime) * 100;

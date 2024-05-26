@@ -1,0 +1,57 @@
+<div class="modal-header" >
+    <h5 class="modal-title pull-left" >Новый район</h5>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="decline()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <form [formGroup]="createForm" (ngSubmit)="createForm.valid&&confirm()">
+    <div class="modal-body">
+ 
+        <h6>От куда?</h6>
+        <ng-select 
+        class="custom"
+        formControlName="startPointId"
+        [items]="districts"
+        bindLabel="title"
+        [autofocus]="false"
+        bindValue="id"
+        [loading]="districtsLoading"
+        [placeholder]="'Выберите город'" 
+        notFoundText="Элемент не найден" 
+        name="fromId" 
+       >
+        </ng-select>
+        <h6 style="margin-top: 12px;">Куда?</h6>
+        <ng-select 
+        class="custom"
+        formControlName="endPointId"
+        [items]="districts"
+        bindLabel="title"
+        [autofocus]="false"
+        bindValue="id"
+        [loading]="districtsLoading"
+        [placeholder]="'Выберите город'" 
+        notFoundText="Элемент не найден" 
+        name="toId" 
+       > 
+        </ng-select>
+        <h6 style="margin-top: 12px;">Цена?</h6>
+        <input
+        formControlName="price"
+        type="number"
+        class="form-control"
+        id="title"
+        placeholder="123456"
+      >
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" [disabled]="!createForm.valid">Сохранить</button>
+    </div>
+</form>
+<div class="row" *ngIf="validationErrors">
+    <div class="col-sm-12">
+        <ul class="text-danger">
+            <li>{{validationErrors}}</li>
+        </ul>
+    </div>
+  </div>

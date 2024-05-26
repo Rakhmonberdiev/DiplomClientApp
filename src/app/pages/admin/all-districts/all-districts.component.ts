@@ -116,10 +116,11 @@ export class AllDistrictsComponent implements OnInit {
       next: () => {
         const confirm = this.createModalRef.content?.createConfirm;
         if(confirm){
+          this.getDists();
           this.toastModalRef = this.modalService.show(ToastComponent, conf);
           setTimeout(() => {
             this.toastModalRef.hide();
-          }, 2000);
+          }, 1000);
         }
       }
     })

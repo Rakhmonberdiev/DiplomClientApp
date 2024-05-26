@@ -34,6 +34,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { DeleteConfirmModalComponent } from './pages/admin/modals/delete-confirm-modal/delete-confirm-modal.component';
 import { DistCreateModalComponent } from './pages/admin/modals/dist-create-modal/dist-create-modal.component';
 import { ToastComponent } from './pages/toast/toast.component';
+import { RoutCreateModalComponent } from './pages/admin/modals/rout-create-modal/rout-create-modal.component';
 registerLocaleData(localeRu);
 
 @NgModule({
@@ -59,6 +60,7 @@ registerLocaleData(localeRu);
         DeleteConfirmModalComponent,
         DistCreateModalComponent,
         ToastComponent,
+        RoutCreateModalComponent,
     ],
     imports: [
     BrowserModule,        
