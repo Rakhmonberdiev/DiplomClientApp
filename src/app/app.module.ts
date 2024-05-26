@@ -37,6 +37,8 @@ import { ToastComponent } from './pages/toast/toast.component';
 import { RoutCreateModalComponent } from './pages/admin/modals/rout-create-modal/rout-create-modal.component';
 import { ScheduleCreateModalComponent } from './pages/admin/modals/schedule-create-modal/schedule-create-modal.component';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { TicketComponent } from './pages/ticket/ticket.component';
+import { TicketDetailsComponent } from './pages/ticket-details/ticket-details.component';
 registerLocaleData(localeRu);
 
 @NgModule({
@@ -64,6 +66,8 @@ registerLocaleData(localeRu);
         ToastComponent,
         RoutCreateModalComponent,
         ScheduleCreateModalComponent,
+        TicketComponent,
+        TicketDetailsComponent,
     ],
     imports: [
     BrowserModule,        

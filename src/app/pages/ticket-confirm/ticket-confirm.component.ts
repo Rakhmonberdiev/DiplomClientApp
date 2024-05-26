@@ -41,6 +41,14 @@ export class TicketConfirmComponent implements OnInit {
       routeId: this.ticketData.id,
       scheduleId: this.ticketData.scheduleId
     }
-    console.log(value)
+    this.ticketService.postTicket(value).subscribe({
+      next: _ =>{
+        const id = _.id
+        this.router.navigateByUrl('ticket/'+id);
+      },
+      error: error=>{
+        console.log(error);
+      }
+    })
   }
 }

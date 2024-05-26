@@ -12,6 +12,9 @@ import { AdminPanelComponent } from "./pages/admin-panel/admin-panel.component";
 import { AllRoutesComponent } from "./pages/admin/all-routes/all-routes.component";
 import { AllDistrictsComponent } from "./pages/admin/all-districts/all-districts.component";
 import { AllSchedulesComponent } from "./pages/admin/all-schedules/all-schedules.component";
+import { TicketDetailsComponent } from "./pages/ticket-details/ticket-details.component";
+import { ticketDetailResolver } from "./_resolvers/ticket-detail.resolver";
+
 
 
 const routes: Routes = [
@@ -21,6 +24,7 @@ const routes: Routes = [
 {path:'about', component: AboutComponent},
 {path:'career', component: CareerComponent},
 { path: 'ticket-confirm', component: TicketConfirmComponent },
+{ path: 'ticket/:id', component: TicketDetailsComponent,resolve:{id:ticketDetailResolver} },
 {path:'', runGuardsAndResolvers: 'always',
     canActivate: [authGuard],
     children:[
