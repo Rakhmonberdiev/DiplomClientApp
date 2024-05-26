@@ -1,5 +1,8 @@
 export interface Ticket{
     qrUrl:string;
-    routeId : string;
-    scheduleId: string;
+    start : string;
+    end: string;
+    schedule:string;
+    price:string;
+    date:string;
 }
