@@ -32,6 +32,8 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { DistUpdateModalComponent } from './pages/admin/modals/dist-update-modal/dist-update-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DeleteConfirmModalComponent } from './pages/admin/modals/delete-confirm-modal/delete-confirm-modal.component';
+import { DistCreateModalComponent } from './pages/admin/modals/dist-create-modal/dist-create-modal.component';
+import { ToastComponent } from './pages/toast/toast.component';
 registerLocaleData(localeRu);
 
 @NgModule({
@@ -55,6 +57,8 @@ registerLocaleData(localeRu);
         AllTicketsComponent,
         DistUpdateModalComponent,
         DeleteConfirmModalComponent,
+        DistCreateModalComponent,
+        ToastComponent,
     ],
     imports: [
     BrowserModule,        

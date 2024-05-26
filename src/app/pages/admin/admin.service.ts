@@ -99,4 +99,9 @@ export class AdminService{
     }
 
 
+    createDist(model:any){
+        return this.http.post(this.baseUrl+'rayon',model);
+    }
+
+
 }

@@ -1,0 +1,27 @@
+<div class="modal-header" >
+    <h5 class="modal-title pull-left" >Новый район</h5>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="decline()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <form [formGroup]="createForm" (ngSubmit)="createForm.valid&&confirm()">
+    <div class="modal-body">
+      <input
+        [class.is-invalid]="createForm.get('title')?.invalid&&createForm.get('title')?.touched"
+        formControlName="title"
+        type="text"
+        class="form-control"
+        id="title"
+        placeholder="Название"
+      >
+      <div class="invalid-feedback" *ngIf="createForm.get('title')?.errors?.['required']" >Название является обязательным</div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" [disabled]="!createForm.valid">Сохранить</button>
+    </div>
+</form>
+<div class="row" *ngIf="validationErrors"> 
+    <ul class="text-danger">
+        <li *ngFor="let error of validationErrors">{{error}}</li>
+    </ul>
+  </div>

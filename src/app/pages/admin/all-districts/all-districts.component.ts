@@ -7,6 +7,8 @@ import { FadeIn } from '../animation';
 import { DistUpdateModalComponent } from '../modals/dist-update-modal/dist-update-modal.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { DeleteConfirmModalComponent } from '../modals/delete-confirm-modal/delete-confirm-modal.component';
+import { DistCreateModalComponent } from '../modals/dist-create-modal/dist-create-modal.component';
+import { ToastComponent } from '../../toast/toast.component';
 
 
 @Component({
@@ -25,6 +27,8 @@ export class AllDistrictsComponent implements OnInit {
   pageSize = 4;
   modalRef:BsModalRef<DistUpdateModalComponent> = new BsModalRef<DistUpdateModalComponent>();
   deleteModalRef:BsModalRef<DeleteConfirmModalComponent> = new BsModalRef<DeleteConfirmModalComponent>();
+  createModalRef:BsModalRef<DistCreateModalComponent> = new BsModalRef<DistCreateModalComponent>();
+  toastModalRef:BsModalRef<ToastComponent> = new BsModalRef<ToastComponent>();
   constructor(private adminService:AdminService, private modalService: BsModalService){
 
   }
@@ -101,5 +105,23 @@ export class AllDistrictsComponent implements OnInit {
         }
       }
     });
+  }
+
+  openCreateModal(){
+    const conf = {
+      animated: true
+    };
+    this.createModalRef = this.modalService.show(DistCreateModalComponent, conf);
+    this.createModalRef.onHide?.subscribe({
+      next: () => {
+        const confirm = this.createModalRef.content?.createConfirm;
+        if(confirm){
+          this.toastModalRef = this.modalService.show(ToastComponent, conf);
+          setTimeout(() => {
+            this.toastModalRef.hide();
+          }, 2000);
+        }
+      }
+    })
   }
 }
