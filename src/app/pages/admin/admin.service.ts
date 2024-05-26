@@ -91,5 +91,12 @@ export class AdminService{
         return  this.http.delete(this.baseUrl+"rayon/"+id);
     }
 
+    deleteRoutes(id:string){
+        return  this.http.delete(this.baseUrl+"routes/"+id);
+    }
+    deleteSchedule(id:string){
+        return  this.http.delete(this.baseUrl+"Schedule/"+id);
+    }
+
 
 }

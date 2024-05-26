@@ -11,7 +11,7 @@
       <tr *ngFor="let sch of schedules">
         <th scope="row">{{sch.id}}</th>
         <td>{{sch.title}}</td>
-        <td><button class="btn btn-outline-danger" >Удалить</button></td>
+        <td><button class="btn btn-outline-danger" (click)="openDeleteModal(sch.id)">Удалить</button></td>
       </tr>
     </tbody>
 </table>

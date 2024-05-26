@@ -18,7 +18,7 @@
         <td>{{rout.starPoint}}</td>
         <td>{{rout.endPoint}}</td>
         <td>{{rout.price}} сум</td>
-        <td><button class="btn btn-outline-danger" >Удалить</button></td>
+        <td><button class="btn btn-outline-danger" (click)="openDeleteModal(rout.id)">Удалить</button></td>
       </tr>
     </tbody>
 </table>

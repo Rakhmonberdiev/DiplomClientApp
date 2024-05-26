@@ -3,6 +3,8 @@ import { AdminService } from '../admin.service';
 import { RouteEn } from '../../../_models/routeEn';
 import { Pagination } from '../../../_models/pagination';
 import { FadeIn } from '../animation';
+import { DeleteConfirmModalComponent } from '../modals/delete-confirm-modal/delete-confirm-modal.component';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-all-routes',
@@ -17,7 +19,8 @@ export class AllRoutesComponent implements OnInit{
   pagination!: Pagination
   pageNumber = 1;
   pageSize = 4;
-  constructor(private adminService:AdminService){
+  deleteModalRef:BsModalRef<DeleteConfirmModalComponent> = new BsModalRef<DeleteConfirmModalComponent>();
+  constructor(private adminService:AdminService, private modalService:BsModalService){
 
   }
   ngOnInit(): void {
@@ -49,5 +52,26 @@ export class AllRoutesComponent implements OnInit{
       this.pageNumber = event.page;
       this.getAllRoutes();
       }
+    }
+
+
+
+    openDeleteModal(id: string) {
+      const config = {
+        animated: true
+      };
+      this.deleteModalRef = this.modalService.show(DeleteConfirmModalComponent, config);
+      this.deleteModalRef.onHide?.subscribe({
+        next: () => {
+          const deleteConfirm = this.deleteModalRef.content?.deleteConfirm;
+          if (deleteConfirm) {
+            this.adminService.deleteRoutes(id).subscribe(
+              ()=>{
+                this.getAllRoutes();
+              }
+            )
+          }
+        }
+      });
     }
 }
