@@ -35,6 +35,8 @@ import { DeleteConfirmModalComponent } from './pages/admin/modals/delete-confirm
 import { DistCreateModalComponent } from './pages/admin/modals/dist-create-modal/dist-create-modal.component';
 import { ToastComponent } from './pages/toast/toast.component';
 import { RoutCreateModalComponent } from './pages/admin/modals/rout-create-modal/rout-create-modal.component';
+import { ScheduleCreateModalComponent } from './pages/admin/modals/schedule-create-modal/schedule-create-modal.component';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 registerLocaleData(localeRu);
 
 @NgModule({
@@ -61,6 +63,7 @@ registerLocaleData(localeRu);
         DistCreateModalComponent,
         ToastComponent,
         RoutCreateModalComponent,
+        ScheduleCreateModalComponent,
     ],
     imports: [
     BrowserModule,        
@@ -75,6 +78,8 @@ registerLocaleData(localeRu);
     TabsModule.forRoot(),
     PaginationModule.forRoot(),
     ModalModule.forRoot(),
+    TimepickerModule.forRoot(),
+    
     
     
     

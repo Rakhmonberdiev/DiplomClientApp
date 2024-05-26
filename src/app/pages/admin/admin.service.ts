@@ -107,5 +107,9 @@ export class AdminService{
         return this.http.post(this.baseUrl+'routes',model)
     }
 
+    createSchedule(model:any){
+        return this.http.post(this.baseUrl+'Schedule',model)
+    }
+
 
 }

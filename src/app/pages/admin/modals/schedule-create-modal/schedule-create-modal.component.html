@@ -1,0 +1,21 @@
+<div class="modal-header" >
+    <h5 class="modal-title pull-left" >Новое расписание</h5>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="decline()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <form>
+    <div class="modal-body">
+        <div class="d-flex justify-content-center">
+            <timepicker 
+            [(ngModel)]="mytime"
+            name="time"
+            [minuteStep]="minute" 
+            [showMeridian]="false">
+          </timepicker>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" [disabled]="!mytime" (click)="sendToServer()" >Сохранить</button>
+    </div>
+</form>
