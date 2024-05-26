@@ -14,6 +14,7 @@ import { AllDistrictsComponent } from "./pages/admin/all-districts/all-districts
 import { AllSchedulesComponent } from "./pages/admin/all-schedules/all-schedules.component";
 import { TicketDetailsComponent } from "./pages/ticket-details/ticket-details.component";
 import { ticketDetailResolver } from "./_resolvers/ticket-detail.resolver";
+import { TicketComponent } from "./pages/ticket/ticket.component";
 
 
 
@@ -25,6 +26,7 @@ const routes: Routes = [
 {path:'career', component: CareerComponent},
 { path: 'ticket-confirm', component: TicketConfirmComponent },
 { path: 'ticket/:id', component: TicketDetailsComponent,resolve:{id:ticketDetailResolver} },
+{ path: 'tickets', component: TicketComponent },
 {path:'', runGuardsAndResolvers: 'always',
     canActivate: [authGuard],
     children:[

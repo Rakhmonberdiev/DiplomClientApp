@@ -26,4 +26,7 @@ export class TicketService {
     return this.http.get<Ticket>(this.baseUrl+'Ticket/'+id)
 
   }
+  getAll(){
+    return this.http.get<Ticket[]>(this.baseUrl+'Ticket/getAll')
+  }
 }

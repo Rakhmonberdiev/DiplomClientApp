@@ -1,4 +1,5 @@
 export interface Ticket{
+    id:string;
     qrUrl:string;
     start : string;
     end: string;

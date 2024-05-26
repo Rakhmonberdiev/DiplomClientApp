@@ -1,0 +1,10 @@
+.con{
+    min-height: 600px;
+}
+tr {
+    transition: font-size 0.2s ease;
+  }
+tr:hover{
+    font-size: 24px;
+    animation: 10ms;
+}

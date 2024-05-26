@@ -1,1 +1,14 @@
-<p>ticket works!</p>
+<div class="con">
+  <br>
+  <br>
+  <h3 class="text-center">Ваши билеты</h3>
+    <table class="table slideT" >
+        <tbody>
+          <tr *ngFor="let ticket of tickets" routerLink="/ticket/{{ticket.id}}" style="cursor: pointer;">
+            <td>{{ticket.start}} - {{ticket.end}}</td>
+            <td>{{ convertToDate(ticket.date) | date:'d MMM yyyy' }}</td>
+            <td>{{ticket.schedule}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

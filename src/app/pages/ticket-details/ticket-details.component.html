@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container slideR">
     <br>
     <br>
     <div class="row">
@@ -11,7 +11,7 @@
             <div class="col-sm-4">
                 <h5>{{ticket.start}} - {{ticket.end}}</h5>
                 <h5>{{ticket.price}}</h5>
-                <h5>{{ticket.date}}</h5>
+                <h5>{{ convertToDate(ticket.date) | date:'d MMM yyyy' }}</h5>
                 <h5>{{ticket.schedule}}</h5>
             </div>
         </div>

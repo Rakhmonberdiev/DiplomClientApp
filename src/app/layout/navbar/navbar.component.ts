@@ -14,4 +14,11 @@ export class NavbarComponent {
     this.accountService.logout();
     this.router.navigateByUrl('/');
   }
+
+  isTicketsRoute(): boolean{
+    return this.router.url==='/tickets'
+  }
+  isHomeRoute(): boolean{
+    return this.router.url==='/'
+  }
 }
