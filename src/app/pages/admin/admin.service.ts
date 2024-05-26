@@ -6,6 +6,7 @@ import { District } from "../../_models/district";
 import { PaginatedResult } from "../../_models/pagination";
 import { Subject, map } from "rxjs";
 import { Schedule } from "../../_models/schedule";
+import { TicketAdmin } from "../../_models/ticketAdmin";
 
 
 
@@ -111,5 +112,10 @@ export class AdminService{
         return this.http.post(this.baseUrl+'Schedule',model)
     }
 
-
+    getAllTickets(search:string){
+        return this.http.get<TicketAdmin[]>(this.baseUrl+'Ticket/admin?search='+search)
+    }
+    deleteTicket(id:string){
+        return  this.http.delete(this.baseUrl+"Ticket/"+id);
+    }
 }

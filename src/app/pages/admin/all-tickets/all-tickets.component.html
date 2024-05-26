@@ -1,1 +1,29 @@
-<p>all-tickets works!</p>
+<br>
+<div class="d-flex flex-wrap">
+    <input name="search" class="form-control mr-sm-2 me-2 mb-sm-0" #search style="width: 600px;" placeholder="Поиск" type="text">
+    <div class="d-flex">
+      <button (click)="onSearch()" class="btn btn-outline-primary me-2" type="submit">Поиск</button>
+      <button (click)="onReset()" class="btn btn-outline-danger">Сброс</button>
+    </div>
+</div>
+<hr>
+@if (tickets.length>0) {
+  <table class="table slideTo" [@fadeIn]>
+    <tbody>
+      <tr *ngFor="let ti of tickets">
+        <td>{{ti.userName}}</td>
+        <td>{{ti.start}}-{{ti.end}}</td>
+        <td>{{ convertToDate(ti.date) | date:'d MMM yyyy' }}</td>
+        <td>{{ti.schedule}}</td>
+
+        <td><button class="btn btn-outline-danger" (click)="openDeleteModal(ti.id)">Удалить</button></td>
+      </tr>
+    </tbody>
+</table>
+}@else {
+  <div class="container" style="height: 400px;">
+    <div class="d-flex justify-content-center slideTo" >
+        <h5>Расписание не найдено....</h5>
+    </div>
+</div>
+}
